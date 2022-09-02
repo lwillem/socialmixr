@@ -221,11 +221,11 @@ contact_matrix(survey = polymod, age.limits = c(0,18,60), weigh.dayofweek = TRUE
 
 ## User-defined participant weights
 
-The `contact_matrix()` allows to specify and use your own weights. Therefore, provide the weight columns names as `participant.weights`.
+The `contact_matrix()` allows to specify and use your own participant weights. Therefore, provide the names of the columns of the participant data you want to use to weight the reported contacts via the `weights` argument.
 
 ```{r message=FALSE, warning=FALSE}
-# e.g. use household size as (dummy) weight
-contact_matrix(survey = polymod, age.limits = c(0,18,60), participant.weights = c('hh_size'))
+# e.g. use household size as (dummy) weight to provide more importance to participant data from large households
+contact_matrix(survey = polymod, age.limits = c(0,18,60), weights = c('hh_size'))
 ```
 
 
