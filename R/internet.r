@@ -1,14 +1,17 @@
-##' Check the status of the Zenodo repository
-##'
-##' @return HTTP status code, or 0 if internet down.
-##' @author Sebastian Funk
-##' @importFrom httr status_code GET
-##' @keywords internal
+#' Check the status of the Zenodo repository
+#'
+#' @return HTTP status code, or 0 if internet down.
+#' @author Sebastian Funk
+#' @importFrom httr status_code HEAD
+#' @keywords internal
 check_zenodo <- function() {
   status <- 0
-  try({
-    status <- status_code(GET("http://zenodo.org"))
-  }, silent = TRUE)
+  try(
+    {
+      status <- status_code(HEAD("https://zenodo.org"))
+    },
+    silent = TRUE
+  )
   return(status)
 }
 
@@ -18,7 +21,9 @@ check_zenodo <- function() {
 ##' @author Sebastian Funk
 ##' @keywords internal
 zenodo_available <- function() {
-  if (check_zenodo() == 200) return(TRUE)
+  if (check_zenodo() == 200) {
+    return(TRUE)
+  }
   return(FALSE)
 }
 
@@ -28,9 +33,11 @@ zenodo_available <- function() {
 ##' @keywords internal
 ensure_zenodo_available <- function() {
   status <- check_zenodo()
-  if (status == 200) return()
+  if (status == 200) {
+    return()
+  }
 
-  err_str <- "The Zenodo repository at http://zenodo.org cannot be accessed."
+  err_str <- "The Zenodo repository at https://zenodo.org cannot be accessed."
 
   if (status > 0) {
     err_str <- paste0(err_str, "HTTP status code ", status, ".")

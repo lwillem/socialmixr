@@ -1,3 +1,21 @@
+# socialmixr 0.1.9
+
+## Major & breaking changes
+
+* `error` argument has been removed from `check()` and always return warnings. If you want to turn these warnings into errors, please have a look at `options(warn = 2)`
+* `quiet` argument has been removed from `check()`, `cite()`, `contact_matrix()`, and `get_survey()`. If you want to silence diagnostic messages, you should use R idiomatic mechanisms, such as `suppressMessages()`
+* new `matrix_plot()` function to plot contact matrix
+
+## Minor changes
+
+* world population data has been updated to 2017 by switching from the wpp2015
+to wpp2017 package
+* `chkDots()` is now used to ensure no argument is silently ignored by S3 methods
+
+## Internal changes
+
+* continuous integration is now done via GitHub Actions
+
 # socialmixr 0.1.8
 
 * fixed test

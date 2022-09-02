@@ -5,12 +5,10 @@
 \alias{cite.survey}
 \title{Citation for a survey}
 \usage{
-\method{cite}{survey}(x, quiet = FALSE, ...)
+\method{cite}{survey}(x, ...)
 }
 \arguments{
 \item{x}{a character vector of surveys to cite}
-
-\item{quiet}{if set to TRUE, do not print entry, just return bibentry object}
 
 \item{...}{ignored}
 }
@@ -18,7 +16,7 @@
 citation as bibentry
 }
 \description{
-Gets a full citation for a \code{\link{survey}}. If quiet is FALSE (default)
+Gets a full citation for a \code{\link[=survey]{survey()}}. If quiet is FALSE (default)
 }
 \examples{
 data(polymod)
